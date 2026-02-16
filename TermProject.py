@@ -91,5 +91,39 @@ def show_workout_summary(workouts):
 def main():
     pass
 
+def main():
+    meals = load_data(MEAL_FILE)
+    workouts = load_data(WORKOUT_FILE)
+
+    while True:
+        print("\n===== Nutrition & Workout Tracker =====")
+        print("1. Add meal")
+        print("2. Add workout")
+        print("3. Show nutrition summary")
+        print("4. Show workout summary")
+        print("5. Set daily calorie goal")
+        print("6. Save and exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            add_meal(meals)
+        elif choice == "2":
+            add_workout(workouts)
+        elif choice == "3":
+            show_nutrition_summary(meals)
+        elif choice == "4":
+            show_workout_summary(workouts)
+        elif choice == "5":
+            set_calorie_goal()
+        elif choice == "6":
+            save_data(MEAL_FILE, meals)
+            save_data(WORKOUT_FILE, workouts)
+            print("Data saved. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number from 1 to 6.")
+
+
 if __name__ == "__main__":
     main()
