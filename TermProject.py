@@ -41,6 +41,24 @@ def add_workout(workouts):
         "calories": calories
     })
 
+def load_calorie_goal():
+    try:
+        with open(CALORIE_GOAL_FILE, "r") as file:
+            return int(file.read())
+    except FileNotFoundError:
+        return None
+
+
+def save_calorie_goal(goal):
+    with open(CALORIE_GOAL_FILE, "w") as file:
+        file.write(str(goal))
+
+
+def set_calorie_goal():
+    goal = int(input("Enter your daily calorie goal: "))
+    save_calorie_goal(goal)
+    print(f"Daily calorie goal set to {goal} calories.")
+
 
 def main():
     pass
