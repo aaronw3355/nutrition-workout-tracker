@@ -59,7 +59,35 @@ def set_calorie_goal():
     save_calorie_goal(goal)
     print(f"Daily calorie goal set to {goal} calories.")
 
+def show_nutrition_summary(meals):
+    total_cal = sum(m["calories"] for m in meals)
+    total_protein = sum(m["protein"] for m in meals)
+    total_carbs = sum(m["carbs"] for m in meals)
+    total_fat = sum(m["fat"] for m in meals)
 
+    goal = load_calorie_goal()
+
+    print("\nNutrition Summary")
+    print(f"Calories consumed: {total_cal}")
+    print(f"Protein: {total_protein} g")
+    print(f"Carbs: {total_carbs} g")
+    print(f"Fat: {total_fat} g")
+
+    if goal:
+        remaining = goal - total_cal
+        if remaining >= 0:
+            print(f"Calories remaining: {remaining}")
+        else:
+            print(f"Calories over goal: {-remaining}")
+
+
+def show_workout_summary(workouts):
+    total_time = sum(w["duration"] for w in workouts)
+    total_burned = sum(w["calories"] for w in workouts)
+
+    print("\nWorkout Summary")
+    print(f"Total workout time: {total_time} minutes")
+    print(f"Calories burned: {total_burned}")
 def main():
     pass
 
